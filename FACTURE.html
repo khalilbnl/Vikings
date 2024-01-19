@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Facture</title>
+</head>
+<style>
+*{
+    font-family: Montserrat,ui-sans-serif,system-ui,sans-serif;
+}
+#logo{
+    margin: 2px;
+    float: left;
+}
+.facture{
+    margin: 30px;
+    font-weight: bold;
+    font-size: 38px;
+    color: #2874d8;
+}
+
+.facture p{
+    float: right;
+}
+#numero_facture{
+   font-size: 30px;
+}
+.name{
+    font-size: 15px;
+    padding: 110px; 
+    padding-left: 15px;
+    font-weight: bold;
+    
+}
+
+#clientbox{
+border-radius: 22px;
+background: linear-gradient(145deg, #c5c5c5, #eaeaea);
+box-shadow:  22px 22px 34px #8a8a8a,-22px -22px 34px #ffffff;
+float:right;
+width: 35%;
+height: 14vh;
+text-align: center;
+font-size: 20px;
+
+}
+
+@media print{
+    .no-print {display: none;}
+}
+.footer{
+border-radius: 22px;
+background: linear-gradient(145deg, #c5c5c5, #eaeaea);
+box-shadow:  22px 22px 34px #8a8a8a,-22px -22px 34px #ffffff;
+width: 100%;
+height: 9vh;
+text-align: center;
+font-size: 20px;
+padding-right: 10px;
+display: block;
+float: right;
+}
+
+</style>
+
+
+<body>
+    <div class="facture">
+      <img src="/Logo.png" alt="" id="logo">
+      <p>
+        BAGHDAD ALUMINIUM
+      </p>
+      <p ></p>
+    </div>
+     <div class="name">
+       <p>
+        <span style=" font-size: 32px ">Facture -</span><span id="numero_facture" contenteditable="true">01</span><br><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2040-12-31" style="border: #2874d8 2px solid;"/> 
+       </p> 
+        <span  id="clientbox" contenteditable="true">Client</span>
+    </div>
+
+    <br><br>
+    <button class="no-print" id="bt">click</button>
+    <button class="no-print" onclick="window.print();">Télécharger</button>
+    <form>
+       <button class="no-print">Submit</button>
+      </form>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr><th>Référence</th><th>Désignation</th><th>Qt</th><th >Unité</th><th >Prix unitaire</th><th>TVA</th><th>Montant HT</th></tr>
+        </thead>
+        <tbody> 
+
+            <tr>
+              <td contenteditable="true" style="width: 1px;">1</td>
+              <td contenteditable="true" style="width: 200px;">Porte</td>
+              <td contenteditable="true" id="qt" style="width: 10px;">1</td>
+              <td contenteditable="true" style="width: 12px;">
+                <select name="" id="" style="border: none;">
+                  <option value="">pce</option>
+                  <option>m²</option>
+                </select>
+              </td>
+              <td><span><input type="text" style="border: none; width: 80px;"></span>DH</td>
+              <td style="width: 20px;">20%</td>
+              <td><span ><input style="width: 80px; border: none;"></span>DH</td>
+            </tr>
+
+         <tbody></tbody>
+        
+       
+        <tr><td style="border:none;"></td>
+          <td style="border:none;"></td>
+          <td style="border:none;"></td>
+          <td style="border:none;"></td>
+          <td style="border:none;"></td>
+          <td style="border:none;"></td>
+          <td><pre style="font-size: 15px;font-weight: bold;"> TVA 20%      <span contenteditable="true">400 dh</span></pre></td>
+        </tr>
+        <tr>
+          <td style="border:none;" colspan="6"></td>
+          <td><pre style="font-size: 15px;font-weight: bold;"> TTC   <p id="net"></p></pre></td>
+        </tr>
+       </tbody>
+        </table>
+        <br><br>  
+        <div>
+           <p style="font-weight: bold;">Réglé par <span style="font-weight: 0;" contenteditable="true">chèque</span></p> 
+           <p style="text-align: center;">Arrêtée la présente facture à la somme de:<span style="font-weight: bold; " contenteditable="true">quatre mille</span>DHS</p>
+          </div>
+      <br><br><br><br>
+          <footer>
+        <div class="footer">
+              <p>19, Bd Baghdad Ain Chock – Casablanca – Gsm : 06 61 45 76 80 
+                RC N° : 383467 patentes N° :34092499 -IF N° :24832700 CNSS N° : 5595733 – ICE N° : 001852014000092
+                </p>
+        </div>
+      </footer>
+      
+      <script>
+        const formEl = document.querySelector("form");
+        const tbodyEl = document.querySelector("tbody");
+        const tableEl = document.querySelector("table");
+        function onAddWebsite(e) {
+          e.preventDefault();
+          tbodyEl.innerHTML += `
+          <tr><td contenteditable="true" style="width: 3px;">1</td><td contenteditable="true" style="width: 100px;">Porte</td><td contenteditable="true" id="qt">1</td><td contenteditable="true">pce</td><td><span ><input id="prixuni"  type="text" style="border: none; width: 48px;"></span>DH</td><td>20%</td><td><span ><input style="width: 80px; border: none;"></span>DH</td></tr>
+
+          `;
+        }
+
+        formEl.addEventListener("submit", onAddWebsite);
+      </script>
+</body>
+</html>   
+
+
+<!--  <div>
+        <table class="table table-hover">
+            <thead>
+            <tr><th>Désignation</th><th>Qt</th><th >Unité</th><th >Prix unitaire</th><th>TVA</th><th>Montant HT</th></tr>
+            </thead>
+            <tbody> 
+
+                <tr><td contenteditable="true">Porte</td><td contenteditable="true" id="qt">1</td><td contenteditable="true">pce</td><td><span ><input id="prixuni"  type="text" style="border: none;"></span>DH</td><td>20%</td><td><span ><input></span>DH</td></tr>
+
+             <tbody> </tbody>
+            
+           
+            <tr><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td><pre style="font-size: 15px;font-weight: bold;"> TVA 20%       400 dh</pre></td></tr>
+            <tr><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td style="border:none;"></td><td><pre style="font-size: 15px;font-weight: bold;" > TTC   <p id="net"></p></pre></td></tr>
+           </tbody>
+            </table>
+      </div>
+     <button class="nono" id="bt">click</button>
+    <button class="no-print" onclick="window.print();">Télécharger</button>
+    <button class="sub">Submit</button>
+
+    
+    <script>
+
+        let prixuni1 = document.getElementById('prixuni');
+        let nett = document.getElementById('net');
+        let bt = document.getElementById('bt');
+        function fun(){
+            prixuni1 = prixuni1.value*0,2
+           console.log(`${prixuni1}`)
+        }
+        bt.addEventListener('click', fun)
+   </script>
+   <script>
+     const formEl = document.getElementsByClassName("sub");
+     const tbodyEl = document.querySelector("tbody");
+      const tableEl = document.querySelector("table");
+      function onAddWebsite(e) {
+        e.preventDefault();
+        tbodyEl.innerHTML += `        
+        <tr><td contenteditable="true">Porte</td><td contenteditable="true" id="qt">1</td><td contenteditable="true">pce</td><td><span ><input id="prixuni"  type="text" style="border: none;"></span>DH</td><td>20%</td><td><span ><input></span>DH</td></tr>
+     `   ;
+      }
+      formEl.addEventListener("sub", onAddWebsite);
+-->
